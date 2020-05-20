@@ -14,8 +14,13 @@ public class HelloworldApplication {
 
 	@Bean
 	ApplicationRunner applicationRunner(GreetingRepository greetingRepository) {
-		return args -> { greetingRepository.save(new GreetingEntity("hallo"));
-			greetingRepository.save(new GreetingEntity("hoi"));
+		return args -> {
+			if(greetingRepository.findByMessage("hallo").isEmpty()) {
+				greetingRepository.save(new GreetingEntity("hallo"));
+			}
+			if(greetingRepository.findByMessage("hoi").isEmpty()) {
+				greetingRepository.save(new GreetingEntity("hoi"));
+			}
 		};
 	}
 
