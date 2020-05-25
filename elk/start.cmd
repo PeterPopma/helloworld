@@ -1,0 +1,1 @@
+docker-compose --file=docker-compose.elk.yml up

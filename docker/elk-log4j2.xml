@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="30">
+	<Appenders>
+		<Socket name="Logstash" protocol="udp" host="localhost" port="5045">
+			<PatternLayout pattern="[[[${hostName}]]] [[[${project.parent.artifactId}]]] [[[%t]]] [[[%p]]] [[[%d{UNIX_MILLIS}]]] [[[%c]]] [[[%m]]] [[[%ex%n"/>
+		</Socket>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Root level="info">
+			<AppenderRef ref="Logstash"/>
+			<AppenderRef ref="Console"/>
+		</Root>
+	</Loggers>
+</Configuration>
